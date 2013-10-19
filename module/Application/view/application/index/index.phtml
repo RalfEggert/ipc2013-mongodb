@@ -1,0 +1,31 @@
+<?php 
+/**
+ * Zend Framework Schulung
+ * 
+ * @package    Application
+ * @author     Ralf Eggert <r.eggert@travello.de>
+ * @copyright  Ralf Eggert <r.eggert@travello.de>
+ * @link       http://www.zendframeworkschulung.de/
+ */
+
+/**
+ * namespace definition and usage
+ */
+use Zend\Debug\Debug;
+use Customer\Entity\CustomerEntity;
+
+/**
+ * Index view script
+ * 
+ * @package    Application
+ */
+
+$this->pageTitle('Herzlich Willkommen!');
+
+?>
+<div class="hero-unit">
+<h1>Ihr erstes ZF2 Modul</h1>
+<p>Ist nun fertig und kann eingesetzt werden!</p>
+<p><a href="<?php echo $this->url('customer');?>" class="btn btn-primary">Kundenliste</a></p>
+</div>
+
