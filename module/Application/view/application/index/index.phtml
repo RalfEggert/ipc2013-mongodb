@@ -1,22 +1,22 @@
-<?php 
+<?php
 /**
- * Zend Framework Schulung
- * 
+ * Zend Framework 2 feat. MongoDB
+ *
+ * Zend Framework Session auf der International PHP Conference 2013 in München
+ *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
  * @copyright  Ralf Eggert <r.eggert@travello.de>
- * @link       http://www.zendframeworkschulung.de/
+ * @link       http://www.ralfeggert.de/
  */
 
 /**
  * namespace definition and usage
  */
-use Zend\Debug\Debug;
-use Customer\Entity\CustomerEntity;
 
 /**
  * Index view script
- * 
+ *
  * @package    Application
  */
 
@@ -24,8 +24,14 @@ $this->pageTitle('Herzlich Willkommen!');
 
 ?>
 <div class="hero-unit">
-<h1>Ihr erstes ZF2 Modul</h1>
-<p>Ist nun fertig und kann eingesetzt werden!</p>
-<p><a href="<?php echo $this->url('customer');?>" class="btn btn-primary">Kundenliste</a></p>
+    <h1>Zend Framework 2 feat. MongoDB</h1>
+
+    <h2>International PHP Conference 2013 in München</h2>
+    <p>Alle Beispiele, die in der Session gezeigt werden, sind mit Hilfe dieses Beispielprojektes nachvollziehbar. Sie können es gerne als
+        Basis für eigene Projekte nutzen.</p>
+    <p>Der Einsatz der MongoDb wird am Beispiel eines <code>Customer</code> Moduls zur Verwaltung von Kundendaten demonstriert. Dabei kommt
+        ein <code>MongoDb</code> Modul zum Einsatz, das einige abstrakte Klassen und Factories für die Anbindung an MongoDb bereitstellt.
+    </p>
+    <p><a href="<?php echo $this->url('customer'); ?>" class="btn btn-primary">Kundenmodul aufrufen</a></p>
 </div>
 

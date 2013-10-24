@@ -1,11 +1,13 @@
 <?php
 /**
- * Zend Framework Schulung
- * 
+ * Zend Framework 2 feat. MongoDB
+ *
+ * Zend Framework Session auf der International PHP Conference 2013 in München
+ *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
  * @copyright  Ralf Eggert <r.eggert@travello.de>
- * @link       http://www.zendframeworkschulung.de/
+ * @link       http://www.ralfeggert.de/
  */
 
 /**
@@ -17,13 +19,14 @@ use Zend\View\Helper\HeadTitle;
 
 /**
  * Helper for setting and retrieving h1 element titles
- * 
+ *
  * @package    Application
  */
 class PageTitle extends HeadTitle
 {
     /**
      * Registry key for placeholder
+     *
      * @var string
      */
     protected $regKey = 'Application_View_Helper_PageTitle';
@@ -31,12 +34,14 @@ class PageTitle extends HeadTitle
     /**
      * Flag whether to automatically escape output, must also be
      * enforced in the child class if __toString/toString is overridden
+     *
      * @var book
      */
     protected $autoEscape = false;
 
     /**
      * What string to use between individual items in the placeholder when rendering
+     *
      * @var string
      */
     protected $separator = ' &raquo; ';
@@ -45,6 +50,7 @@ class PageTitle extends HeadTitle
      * Turn helper into string
      *
      * @param  string|null $indent
+     *
      * @return string
      */
     public function toString($indent = null)
@@ -53,7 +59,7 @@ class PageTitle extends HeadTitle
         $output = str_replace(
             array('<title>', '</title>'), array('<h1>', '</h1>'), $output
         );
-        
+
         return $output;
     }
 }

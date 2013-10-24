@@ -1,11 +1,13 @@
 <?php
 /**
- * Zend Framework Schulung
- * 
+ * Zend Framework 2 feat. MongoDB
+ *
+ * Zend Framework Session auf der International PHP Conference 2013 in München
+ *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
  * @copyright  Ralf Eggert <r.eggert@travello.de>
- * @link       http://www.zendframeworkschulung.de/
+ * @link       http://www.ralfeggert.de/
  */
 
 /**
@@ -17,9 +19,9 @@ use Zend\Filter\AbstractFilter;
 
 /**
  * StringToUrl filter
- * 
+ *
  * Filters text to convert all chars to lower and all special chars to limited chars
- * 
+ *
  * @package    Application
  */
 class StringToUrl extends AbstractFilter
@@ -35,6 +37,7 @@ class StringToUrl extends AbstractFilter
      * Sets the filter options
      *
      * @param  string $delimiter
+     *
      * @return void
      */
     public function __construct($delimiter = '-')
@@ -48,6 +51,7 @@ class StringToUrl extends AbstractFilter
      * Returns dirname($value)
      *
      * @param  string $value
+     *
      * @return string
      */
     public function filter($value)
@@ -81,33 +85,33 @@ class StringToUrl extends AbstractFilter
             '=ý|ÿ|Ý|Ÿ=i',
             '=ź|ž|ż|Ź|Ž|Ż=i',
         );
-        
+
         // build replace array
         $replace = array(
             $this->_delimiter,
             'a', 'aa', 'ae', 'c', 'd', 'dj', 'e', 'g', 'h', 'i', 'j', 'k', 'l',
             'n', 'o', 'oe', 'r', 's', 'ss', 't', 'th', 'u', 'ue', 'y', 'z',
         );
-        
+
         // replace special characters
-        $value = preg_replace($search, $replace, (string) $value);
-        
+        $value = preg_replace($search, $replace, (string)$value);
+
         // replace other characters
         $value = preg_replace(
             '=[^a-z0-9' . $this->_delimiter . ']*=i', '', $value
         );
-        
+
         // replace double -
         $value = preg_replace(
             '=' . $this->_delimiter . '+=', $this->_delimiter, $value
         );
-        
+
         // strip out leading and ending "-" 
         $value = preg_replace(
-            '=^' . $this->_delimiter . '|' . $this->_delimiter . '$=', 
+            '=^' . $this->_delimiter . '|' . $this->_delimiter . '$=',
             '', $value
         );
-        
+
         // convert to lower case
         return strtolower($value);
     }

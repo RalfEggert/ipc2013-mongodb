@@ -1,11 +1,13 @@
 <?php
 /**
- * Zend Framework Schulung
- * 
+ * Zend Framework 2 feat. MongoDB
+ *
+ * Zend Framework Session auf der International PHP Conference 2013 in München
+ *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
  * @copyright  Ralf Eggert <r.eggert@travello.de>
- * @link       http://www.zendframeworkschulung.de/
+ * @link       http://www.ralfeggert.de/
  */
 
 /**
@@ -19,18 +21,19 @@ use Zend\View\Helper\AbstractHelper;
 
 /**
  * Date output
- * 
+ *
  * Simplifies the date output for the dateFormat view helper
- * 
+ *
  * @package    Application
  */
 class Date extends AbstractHelper
 {
     /**
      * get string date and output it
-     * 
+     *
      * @param string $dateString
      * @param string $mode
+     *
      * @return boolean
      */
     public function __invoke($dateString, $mode = 'medium')
@@ -38,7 +41,7 @@ class Date extends AbstractHelper
         if ($dateString == '0000-00-00 00:00:00') {
             return '-';
         }
-        
+
         switch ($mode) {
             case 'long':
                 $dateType = IntlDateFormatter::LONG;
@@ -61,9 +64,9 @@ class Date extends AbstractHelper
                 $timeType = IntlDateFormatter::MEDIUM;
                 break;
         }
-        
+
         $dateTime = new DateTime($dateString);
-        
+
         return $this->getView()->dateFormat($dateTime, $dateType, $timeType);
     }
 }

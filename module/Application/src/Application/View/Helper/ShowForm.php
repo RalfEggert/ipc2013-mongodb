@@ -1,11 +1,13 @@
 <?php
 /**
- * Zend Framework Schulung
- * 
+ * Zend Framework 2 feat. MongoDB
+ *
+ * Zend Framework Session auf der International PHP Conference 2013 in München
+ *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
  * @copyright  Ralf Eggert <r.eggert@travello.de>
- * @link       http://www.zendframeworkschulung.de/
+ * @link       http://www.ralfeggert.de/
  */
 
 /**
@@ -21,9 +23,9 @@ use Zend\View\Helper\AbstractHelper;
 
 /**
  * Show form view helper
- * 
+ *
  * Outputs a form in Twitter Bootstrap style
- * 
+ *
  * @package    Application
  */
 class ShowForm extends AbstractHelper
@@ -31,28 +33,28 @@ class ShowForm extends AbstractHelper
     /**
      * Outputs message depending on flag
      *
-     * @return string 
+     * @return string
      */
     public function __invoke(Form $form, $url, $class = 'form-horizontal')
     {
         $form->setAttribute('action', $url);
         $form->setAttribute('class', $class);
         $form->prepare();
-        
+
         $output = $this->getView()->form()->openTag($form);
-        
+
         $submitElements = array();
-        
+
         foreach ($form as $element) {
             if ($element instanceof Submit) {
                 $submitElements[] = $element;
-            } elseif ($element instanceof Csrf 
+            } elseif ($element instanceof Csrf
                 || $element instanceof Hidden
             ) {
                 $output .= $this->getView()->formElement($element);
             } else {
                 $element->setLabelAttributes(array('class' => 'control-label'));
-                
+
                 $output .= '<div class="control-group">';
                 $output .= $this->getView()->formLabel($element);
                 $output .= '<div class="controls">';
@@ -62,15 +64,15 @@ class ShowForm extends AbstractHelper
                 $output .= '</div>';
             }
         }
-        
+
         $output .= '<div class="form-actions">';
         foreach ($submitElements as $element) {
             $output .= $this->getView()->formElement($element) . '&nbsp;';
         }
         $output .= '</div>';
-        
+
         $output .= $this->getView()->form()->closeTag();
-        
+
         return $output;
     }
 }

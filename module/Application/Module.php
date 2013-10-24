@@ -1,11 +1,13 @@
 <?php
 /**
- * Zend Framework Schulung
- * 
+ * Zend Framework 2 feat. MongoDB
+ *
+ * Zend Framework Session auf der International PHP Conference 2013 in München
+ *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
  * @copyright  Ralf Eggert <r.eggert@travello.de>
- * @link       http://www.zendframeworkschulung.de/
+ * @link       http://www.ralfeggert.de/
  */
 
 /**
@@ -24,10 +26,10 @@ use Zend\Mvc\MvcEvent;
 
 /**
  * Application module class
- * 
+ *
  * @package    Application
  */
-class Module implements 
+class Module implements
     BootstrapListenerInterface,
     ConfigProviderInterface,
     AutoloaderProviderInterface
@@ -36,21 +38,22 @@ class Module implements
      * Listen to the bootstrap event
      *
      * @param MvcEvent $e
+     *
      * @return void
      */
     public function onBootstrap(EventInterface $e)
     {
         // attach module listener
-        $eventManager        = $e->getApplication()->getEventManager();
+        $eventManager = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
-        
+
         // add application listener
         $eventManager->attachAggregate(new ApplicationListener());
-        
+
         // configure session
         $e->getApplication()->getServiceManager()->get('Session\Config');
-        
+
         // add StringToUrl filter to StaticFilter
         StaticFilter::getPluginManager()->setInvokableClass(
             'stringToUrl', 'Application\Filter\StringToUrl'

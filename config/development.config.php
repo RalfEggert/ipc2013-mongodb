@@ -1,30 +1,32 @@
 <?php
 /**
- * Zend Framework Schulung
- * 
+ * Zend Framework 2 feat. MongoDB
+ *
+ * Zend Framework Session auf der International PHP Conference 2013 in München
+ *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
  * @copyright  Ralf Eggert <r.eggert@travello.de>
- * @link       http://www.zendframeworkschulung.de/
+ * @link       http://www.ralfeggert.de/
  */
 
 /**
  * Application configuration
- * 
+ *
  * @package    Application
  */
 return array(
-    'modules' => array(
+    'modules'                 => array(
         'Application',
+        'MongoDb',
         'Customer',
         'ZendDeveloperTools',
-        'BjyProfiler',
     ),
     'module_listener_options' => array(
-        'config_glob_paths'    => array(
+        'config_glob_paths'        => array(
             'config/autoload/{,*.}{production,development}.php',
         ),
-        'module_paths' => array(
+        'module_paths'             => array(
             './module',
             './vendor',
         ),

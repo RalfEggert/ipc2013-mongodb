@@ -1,0 +1,61 @@
+<?php
+/**
+ * Zend Framework 2 feat. MongoDB
+ *
+ * Zend Framework Session auf der International PHP Conference 2013 in München
+ *
+ * @package    Customer
+ * @author     Ralf Eggert <r.eggert@travello.de>
+ * @copyright  Ralf Eggert <r.eggert@travello.de>
+ * @link       http://www.ralfeggert.de/
+ */
+use Customer\Entity\CustomerEntity;
+
+/**
+ * namespace definition and usage
+ */
+
+/**
+ * Index view script
+ *
+ * @package    Customer
+ */
+
+$this->headTitle('Kundenliste');
+$this->pageTitle('Kundenliste');
+
+?>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Vorname</th>
+        <th>Nachname</th>
+        <th>Anschrift</th>
+        <th>Land</th>
+        <th style="text-align: right;"><a href="<?php echo $this->url('customer/action', array('action' => 'create')); ?>"
+                                          class="btn btn-small"><i class="icon-plus"></i> anlegen</a></th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($this->customerList as $customerEntity) : /* @var $customerEntity CustomerEntity */ ?>
+        <tr>
+            <td><?php echo $customerEntity->getFirstname(); ?></td>
+            <td><?php echo $customerEntity->getLastname(); ?></td>
+            <td><?php echo
+                    $customerEntity->getAddress()->getStreet() . ', ' . $customerEntity->getAddress()->getPostcode() . ' ' . $customerEntity
+                        ->getAddress()->getCity(); ?></td>
+            <td><?php echo $this->customerCountry($customerEntity); ?></td>
+            <td style="text-align: right;">
+                <a href="<?php echo $this->url('customer/action', array('action' => 'show', 'id' => $customerEntity->getId())); ?>"
+                   class="btn btn-small"><i class="icon-search"></i> anzeigen</a>
+                <a href="<?php echo $this->url('customer/action', array('action' => 'update', 'id' => $customerEntity->getId())); ?>"
+                   class="btn btn-small"><i class="icon-pencil"></i> bearbeiten</a>
+                <a href="<?php echo $this->url('customer/action', array('action' => 'delete', 'id' => $customerEntity->getId())); ?>"
+                   class="btn btn-small" onClick="return confirm('Sind Sie sicher?')"><i class="icon-trash"></i> löschen</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<hr/>
+<a href="<?php echo $this->url('home'); ?>" class="btn btn-success">Übersicht</a>

@@ -1,9 +1,9 @@
 <?php
 return array(
     'zenddevelopertools' => array(
-         /**
-          * General Profiler settings
-          */
+        /**
+         * General Profiler settings
+         */
         'profiler' => array(
             /**
              * Enables or disables the profiler.
@@ -11,7 +11,7 @@ return array(
              * Expects: bool
              * Default: false
              */
-            'enabled' => true,
+            'enabled'     => true,
 
             /**
              * Enables or disables the strict mode. If the strict mode is
@@ -21,7 +21,7 @@ return array(
              * Expects: bool
              * Default: true
              */
-            'strict' => false,
+            'strict'      => false,
 
             /**
              * If enabled, the profiler tries to flush the content before the it
@@ -47,7 +47,7 @@ return array(
              * Expects: string
              * Default: 'data/cache'
              */
-            'cache_dir' => 'data/cache',
+            'cache_dir'   => 'data/cache',
 
             /**
              * If a matches is defined, the profiler will be disabled if the
@@ -59,7 +59,7 @@ return array(
              *
              * Note: The matcher is not implemented yet!
              */
-            'matcher' => array(),
+            'matcher'     => array(),
 
             /**
              * Contains a list with all collector the profiler should run.
@@ -71,19 +71,19 @@ return array(
              *
              * Expects: array
              */
-            'collectors' => array(),
+            'collectors'  => array(),
         ),
-         /**
-          * General Toolbar settings
-          */
-        'toolbar' => array(
+        /**
+         * General Toolbar settings
+         */
+        'toolbar'  => array(
             /**
              * Enables or disables the Toolbar.
              *
              * Expects: bool
              * Default: false
              */
-            'enabled' => true,
+            'enabled'       => true,
 
             /**
              * If enabled, every empty collector will be hidden.
@@ -91,7 +91,7 @@ return array(
              * Expects: bool
              * Default: false
              */
-            'auto_hide' => false,
+            'auto_hide'     => false,
 
             /**
              * The Toolbar position.
@@ -99,7 +99,7 @@ return array(
              * Expects: string ('bottom' or 'top')
              * Default: bottom
              */
-            'position' => 'bottom',
+            'position'      => 'bottom',
 
             /**
              * If enabled, the Toolbar will check if your current Zend Framework version
@@ -110,7 +110,7 @@ return array(
              * Expects: bool
              * Default: false
              */
-            'version_check' => true,
+            'version_check' => false,
 
             /**
              * Contains a list with all collector toolbar templates. The name
@@ -130,7 +130,7 @@ return array(
              *
              * Expects: array
              */
-            'entries' => array(),
+            'entries'       => array(),
         ),
     ),
 );
