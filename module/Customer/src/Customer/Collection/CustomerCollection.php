@@ -15,12 +15,8 @@
  */
 namespace Customer\Collection;
 
-use Application\Entity\AbstractEntity;
 use Customer\Entity\CustomerEntity;
-use MongoCollection;
-use MongoDB;
 use MongoDb\Collection\AbstractCollection;
-use MongoId;
 
 /**
  * Customer collection
