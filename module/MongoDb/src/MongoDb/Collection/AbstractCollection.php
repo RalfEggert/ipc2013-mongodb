@@ -27,7 +27,7 @@ use MongoId;
  *
  * @package    MongoDb
  */
-class AbstractCollection
+abstract class AbstractCollection
 {
     /**
      * @var MongoCollection
